@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
+using Microsoft.CodeAnalysis.ErrorReporting;
 using Roslyn.Utilities;
 
 namespace Microsoft.CodeAnalysis.Editor.Shared.Utilities
@@ -67,7 +68,10 @@ namespace Microsoft.CodeAnalysis.Editor.Shared.Utilities
         public ForegroundThreadAffinitizedObject(bool assertIsForeground = false)
         {
             // For sanity's sake, ensure that our idea of "foreground" is the same as WPF's
-            Contract.ThrowIfFalse(Application.Current == null || Application.Current.Dispatcher.Thread == ForegroundThreadAffinitizedObject.s_foregroundThread);
+            if (!(Application.Current == null || Application.Current.Dispatcher.Thread == ForegroundThreadAffinitizedObject.s_foregroundThread))
+            {
+                FatalError.Report(new Exception("Object is created by a background thread"));
+            }
 
             // ForegroundThreadAffinitizedObject might not necessarily be created on a foreground thread.
             // AssertIsForeground here only if the object must be created on a foreground thread.
