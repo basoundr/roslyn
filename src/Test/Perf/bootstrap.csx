@@ -7,5 +7,5 @@ InitUtilities();
 ShellOutVital("msbuild", "./Roslyn.sln /p:Configuration=Release", workingDirectory: RoslynDirectory());
 
 string from = BinReleaseDirectory();
-string to = Path.Combine(BinDirectory(), "PerfBootstrap");
+string to = BootStrapedBinariesDirectory();
 System.IO.Directory.Move(from, to);

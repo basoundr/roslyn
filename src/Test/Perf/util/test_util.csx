@@ -91,6 +91,11 @@ string BinReleaseDirectory()
     return Path.Combine(BinDirectory(), "Release");
 }
 
+string BootStrapedBinariesDirectory()
+{
+    return Path.Combine(BinDirectory(), "PerfBootstrap");
+}
+
 string DebugCscPath()
 {
     return Path.Combine(BinDebugDirectory(), "csc.exe");
@@ -99,6 +104,11 @@ string DebugCscPath()
 string ReleaseCscPath()
 {
     return Path.Combine(BinReleaseDirectory(), "csc.exe");
+}
+
+string BootStrapedCscPath()
+{
+    return Path.Combine(BootStrapedBinariesDirectory(), "csc.exe");
 }
 
 string DebugVbcPath()
@@ -166,9 +176,12 @@ ProcessResult ShellOut(
     if (cancelationToken != null) {
         cancelationToken.Value.Register(() => process.Kill());
     }
+    
+            System.Console.WriteLine($"running \"{file}\" with arguments \"{args}\" from directory {workingDirectory}");
 
     if (IsVerbose()) {
         Log($"running \"{file}\" with arguments \"{args}\" from directory {workingDirectory}");
+
     }
     process.Start();
 

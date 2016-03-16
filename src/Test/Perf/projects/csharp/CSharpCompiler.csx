@@ -13,5 +13,5 @@ string args = $"{responseFile} /keyfile:{keyfileLocation}";
 
 string executeInDirectory = Path.Combine(MyTempDirectory(), "csharp");
 
-var msToCompile = WalltimeMs(() => ShellOutVital(ReleaseCscPath(), args, executeInDirectory));
+var msToCompile = WalltimeMs(() => ShellOutVital(BootStrapedCscPath(), args, executeInDirectory));
 Report(ReportKind.CompileTime, "compile duration (ms)", msToCompile);
