@@ -8,8 +8,8 @@ InitUtilities();
 // Copy CPC binaries from the share to the local machine
 DownloadCPC();
 
-// ShellOutVital("msbuild", "./Roslyn.sln /p:Configuration=Release", workingDirectory: RoslynDirectory());
+ShellOutVital("msbuild", "./Roslyn.sln /p:Configuration=Release", workingDirectory: RoslynDirectory());
 
-//string from = BinReleaseDirectory();
-//string to = BootStrapedBinariesDirectory();
-// System.IO.Directory.Move(from, to);
+string from = BinReleaseDirectory();
+string to = BootStrapedBinariesDirectory();
+System.IO.Directory.Move(from, to);
