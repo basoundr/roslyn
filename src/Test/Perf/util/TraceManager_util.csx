@@ -29,7 +29,7 @@ public class TraceManager
 
     public void Setup()
     {
-        // var processResult = RunProcess(_cpcFullPath, "/Setup /DisableArchive");
+         var processResult = RunProcess(_cpcFullPath, "/Setup /DisableArchive");
         if (processResult.Failed)
         {
             throw new SystemException($@"The process ""CPC.exe /Setup /DisableArchive"" failed. {processResult.StdErr}");
@@ -38,7 +38,7 @@ public class TraceManager
 
     public void Start()
     {
-        // var processResult = RunProcess(_cpcFullPath, "/Start /DisableArchive");
+        var processResult = RunProcess(_cpcFullPath, "/Start /DisableArchive");
         if (processResult.Failed)
         {
             throw new SystemException($@"The process ""CPC.exe /Start /DisableArchive"" failed. {processResult.StdErr}");
@@ -47,7 +47,7 @@ public class TraceManager
 
     public void Stop()
     {
-        // var processResult = RunProcess(_cpcFullPath, "/Stop /DisableArchive");
+        var processResult = RunProcess(_cpcFullPath, "/Stop /DisableArchive");
         if (processResult.Failed)
         {
             throw new SystemException($@"The process ""CPC.exe /Stop /DisableArchive"" failed. {processResult.StdErr}");
@@ -56,7 +56,7 @@ public class TraceManager
 
     public void Cleanup()
     {
-        // var processResult = RunProcess(_cpcFullPath, "/Cleanup /DisableArchive");
+        var processResult = RunProcess(_cpcFullPath, "/Cleanup /DisableArchive");
         if (processResult.Failed)
         {
             throw new SystemException($@"The process ""CPC.exe /Cleanup /DisableArchive"" failed. {processResult.StdErr}");
