@@ -1,5 +1,7 @@
 artifacts/
 results/
 temp/
+DataBackup*/
+consumptionTempResults.xml
 *.json
 *.csv
