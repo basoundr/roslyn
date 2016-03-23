@@ -2,7 +2,7 @@
 
 #load "..\util\test_util.csx"
 #load "..\util\runner_util.csx"
-#load "..\util\Download_util.csx"
+#load "..\util\download_util.csx"
 
 InitUtilities();
 
