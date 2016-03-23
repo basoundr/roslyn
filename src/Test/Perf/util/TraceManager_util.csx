@@ -1,4 +1,4 @@
-#load "ScenarioGenerator_util.csx"
+#load "scenarioGenerator_util.csx"
 
 using System;
 using System.Diagnostics;
