@@ -240,9 +240,9 @@ namespace Roslyn.Test.Performance.Utilities
             };
         }
 
-        public static string StdoutFrom(string program, bool verbose, ILogger logger, string args = "")
+        public static string StdoutFrom(string program, bool verbose, ILogger logger, string args = "", string workingDirectory = null)
         {
-            var result = ShellOut(program, args, verbose, logger);
+            var result = ShellOut(program, args, verbose, logger, workingDirectory);
             if (result.Failed)
             {
                 LogProcessResult(result, logger);
