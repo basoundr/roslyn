@@ -41,7 +41,9 @@
          in the case of 20160615, we will set BuildNumberFiveDigitDateStamp to 60615. Unfortunately for releases in 2017 we can't go any higher, so
          well continue the month counting instead: the build after 61231 is 61301. -->
     <BuildNumberFiveDigitDateStamp>$([MSBuild]::Subtract($(BuildNumber.Split('.')[0].Substring(3).Trim()), 8800))</BuildNumberFiveDigitDateStamp>
-    <BuildNumberBuildOfTheDayPadded>$(BuildNumber.Split('.')[1].PadLeft(2,'0'))</BuildNumberBuildOfTheDayPadded>
+
+    <!-- Change the padding to increment the local build -->
+    <BuildNumberBuildOfTheDayPadded Condition="'$(UseLocalRoslynForIntegrationTests)' == 'true'">$([System.DateTime]::Now.ToString(yyyyMMddHHmm))</BuildNumberBuildOfTheDayPadded>
 
     <!-- NuGet version -->
     <NuGetReleaseVersion>$(RoslynFileVersionBase)</NuGetReleaseVersion>

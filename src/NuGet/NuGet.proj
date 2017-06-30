@@ -4,6 +4,16 @@
   <Import Project="..\..\build\Targets\Settings.props" />
 
   <Target Name="Build">
+
+    <!-- Clean the folder -->
+    <PropertyGroup>
+      <TargetFolder>$(OutputPath)NuGet\PerBuildPreRelease</TargetFolder>
+    </PropertyGroup>
+    <ItemGroup>
+      <FilesToClean Include="$(TargetFolder)\**\*"/>
+    </ItemGroup>
+    <Delete Files="@(FilesToClean)" ContinueOnError="true"/>
+
     <!-- NuGetPerBuildPreReleaseVersion -->
     <Exec Command="$(OutputPath)Exes\csi\csi.exe $(MSBuildThisFileDirectory)BuildNuGets.csx $(OutputPath) $(NuGetPerBuildPreReleaseVersion) $(OutputPath)NuGet\PerBuildPreRelease &quot;$(GitHeadSha)&quot;" Condition="'$(NuGetPerBuildPreReleaseVersion)' != ''" />
 
